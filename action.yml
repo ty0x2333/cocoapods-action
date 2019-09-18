@@ -1,0 +1,29 @@
+name: CocoaPods Action
+description: An action for validating Pods and testing iOS/macOS project
+author: 'ty0x2333'
+branding:
+  color: blue
+  icon: code
+inputs:
+  workspace:
+    description: .xcworkspace file
+  scheme:
+    description: Shared scheme
+  use_modern_build_system:
+    description: Use modern build system
+    default: false
+  additional_build_params:
+    description: Additional xcodebuild params
+    default: ""
+  additional_lint_params:
+    description: Additional `pod lib lint` params
+    default: ""
+  test:
+    description: Run test
+    default: true
+  lint:
+    description: Validate Pod
+    default: true
+runs:
+  using: node12
+  main: main.js
