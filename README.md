@@ -1,5 +1,6 @@
 CocoaPods Action
 ===
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/ty0x2333/cocoapods-action)](https://github.com/ty0x2333/cocoapods-action/releases)
 
 ### Inputs
 
