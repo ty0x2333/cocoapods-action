@@ -25,6 +25,8 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@master
+    - name: Switch XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.app
     - name: Install Dependences
       run: |
         cd Example
@@ -33,8 +35,8 @@ jobs:
       shell: bash
     - uses: ty0x2333/cocoapods-action@master
       with:
-        workspace: <Your-Workspace>
-        scheme: <Your-Shared-Scheme>
+        additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.0'
+        additional_lint_params: --private
 ```
 
 #### pod-template Project
