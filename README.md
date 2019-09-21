@@ -49,7 +49,7 @@ You can refer to this example: https://github.com/ty0x2333/GitHubActionPodDemo
 
 https://stackoverflow.com/questions/56326847/xcodebuild-skip-finished-requesting-crash-reports-continuing-with-testing
 
-This is the BUG of XCode 10. This problem can be solved by specifying the ID of the simulator.
+This is the BUG of `XCode 10.*`. It can be solved by specifying the ID of the simulator.
 
 In the following example, we want to run on the iPhone X.
 

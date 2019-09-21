@@ -1,9 +1,25 @@
 const shell = require('shelljs');
 const core = require('@actions/core');
 const github = require('@actions/github');
+const path = require('path');
 
 function printSoftEnv(name, command) {
     shell.exec('echo "\033[1m' + name + ':\033[0m \n`' + command + '`"')
+}
+
+function intelligentSelectScheme(schemes, workspacePath) {
+    if (schemes.length < 1) {
+        return null
+    }
+    const workspaceName = path.parse(workspacePath).name
+    const podTemplateDefaultScheme = workspaceName + '-Example'
+    if (schemes.includes(podTemplateDefaultScheme)) { // For pod-template project
+        return podTemplateDefaultScheme
+    }
+    if (schemes.includes(workspaceName)) {
+        return workspaceName
+    }
+    return schemes[0]
 }
 
 shell.echo("\033[1m=== Software Environments ===\033[0m")
@@ -35,11 +51,11 @@ if (!scheme) {
     const workspaceInfo = JSON.parse(shell.exec('xcodebuild -workspace ' + workspace + ' -list -json', {silent: true}).stdout)
     const schemes = workspaceInfo.workspace.schemes
     console.log('find schemes: ' + JSON.stringify(schemes))
-    if (schemes.length < 1) {
+    scheme = intelligentSelectScheme(schemes, workspace)
+    if (!scheme) {
         core.setFailed('Unable to find the scheme. Did you set with.scheme?')
         process.exit(1)
     }
-    scheme = schemes[0]
     core.warning('No `scheme` specified. use "' + scheme + '"')
 }
 
