@@ -2,8 +2,8 @@ name: CocoaPods Action
 description: An action for validating Pods and testing iOS/macOS project
 author: 'ty0x2333'
 branding:
-  color: blue
-  icon: code
+  color: orange
+  icon: coffee
 inputs:
   workspace:
     description: .xcworkspace file
