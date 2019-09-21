@@ -3,7 +3,7 @@ description: An action for validating Pods and testing iOS/macOS project
 author: 'ty0x2333'
 branding:
   color: orange
-  icon: coffee
+  icon: box
 inputs:
   workspace:
     description: .xcworkspace file
