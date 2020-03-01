@@ -60,13 +60,13 @@ if (!scheme) {
 }
 
 var useModernBuildSystem
-if (core.getInput('use_modern_build_system') === true) {
+if (core.getInput('use_modern_build_system') === 'true') {
     useModernBuildSystem = "YES"
 } else {
     useModernBuildSystem = "NO"
 }
 
-if (core.getInput('test')) {
+if (core.getInput('test') === 'true') {
     var additionXcodeBuildParams = core.getInput('additional_build_params')
     shell.echo("\033[1m=== Test ===\033[0m")
     const buildCommand = 'set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace ' + workspace + ' -scheme ' + scheme + ' ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -UseModernBuildSystem=' + useModernBuildSystem + ' ' + additionXcodeBuildParams + ' | xcpretty --color'
@@ -77,7 +77,7 @@ if (core.getInput('test')) {
     }
 }
 
-if (core.getInput('lint')) {
+if (core.getInput('lint') === 'true') {
     var additionLintParams = core.getInput('additional_lint_params')
     shell.echo("\033[1m=== Lint ===\033[0m")
     const lintCommand = 'pod lib lint ' + additionLintParams
