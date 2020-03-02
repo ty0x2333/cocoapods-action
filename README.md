@@ -25,7 +25,7 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@master
-    - name: Switch XCode Version
+    - name: Set XCode Version
       run: sudo xcode-select -s /Applications/Xcode_11.app
     - name: Install Dependences
       run: |
