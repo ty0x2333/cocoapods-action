@@ -27,11 +27,10 @@ jobs:
     - uses: actions/checkout@master
     - name: Set XCode Version
       run: sudo xcode-select -s /Applications/Xcode_11.app
-    - name: Install Dependences
+    - name: Install Dependencies
       run: |
         cd Example
-        pod repo update
-        pod install
+        pod install --repo-update
       shell: bash
     - uses: ty0x2333/cocoapods-action@master
       with:
