@@ -2,7 +2,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "@actions/core": "^1.1.0",
     "@actions/github": "^1.1.0"
   }
